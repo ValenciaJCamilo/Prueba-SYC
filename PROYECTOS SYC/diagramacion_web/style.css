@@ -1,0 +1,89 @@
+/**Seteo de estilos por defecto del navegador*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/**Se establece la tipografía del documento, así como el color de fondo*/
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f5f5f5;
+}
+
+/**Estilo para el título principal*/
+h1{
+  color:rgba(51, 51, 51, 0.719);
+  text-align: center;
+  padding: 10px;
+  font-size:2rem;
+}
+
+/**Estilo para el contenedor de las imagenes*/
+.container {
+  display: grid; /*Propiedad para trabajar como una grilla el container*/
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /*Se establece un ancho mínimo para ocupar 3 columnas*/
+  grid-gap: 5px; /*Espaciado entre imagenes de 5px*/
+}
+
+/**Estilo para las imagenes que se encuentran dentro del contenedor*/
+.container img {
+  width: 100%; /*Propiedad para que la imagen ocupe su tamaño 100%*/
+  height: auto;
+  object-fit: cover; /*Propiedad para recortar partes que exceda los limites*/
+  cursor:pointer;
+  transition: .1s all ease-in;
+}
+/*Estilo al momento de posicionarnos sobre alguna de las imagenes disponibles*/
+.container img:hover {
+  transform: scale(0.95);
+}
+
+/** Estilos al momento de abrir el respectivo modal */
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; /*Hace que se ocupe todo el ancho*/
+  height: 100%; /*Hace que se ocupe todo el alto*/
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+/* Estilos del contenido del modal */
+.modal-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: block;
+  width: 100%;
+  max-width: 95%;
+  height: auto;
+  max-height: 95vh;
+  object-fit: cover;
+}
+
+/* Estilos del botón de cerrar */
+.close {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  color: #f1f1f1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/**Estilo para adaptar de forma responsive
+Con esto se logra definir que a tamaños a partir de, por ejemplo, 700px, las imagenes se ajusten obligatoriamente de 3 en 3, es decir, cada fila tendrá como máximo 3 columnas de 1fr, de forma que se repita este patrón y se comode*/
+@media only screen and (min-width: 700px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
